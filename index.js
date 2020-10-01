@@ -71,7 +71,7 @@ app.get("/:hash", async (req, res) => {
     res.redirect(originalUrl);
   }
   catch (error) {
-    console.log('error aaya');
+    console.log('Error occured');
   }
 });
 

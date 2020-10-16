@@ -1,4 +1,5 @@
 var MongoClient = require("mongodb").MongoClient
+// mongoose.connect('mongodb://localhost:27017/', {useNewUrlParser: true, useUnifiedTopology: true});
 var url = "mongodb://localhost:27017/"
 
 const insertQuery = (input)=>{

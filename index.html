@@ -16,80 +16,14 @@
         <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:px-0">
           <form id="url-form">
           <input class="flex-grow w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mr-4 mb-4 sm:mb-0" placeholder="Enter valid URL" type="text">
-          <br><br>
-          <input class="flex-grow w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mr-4 mb-4 sm:mb-0" placeholder="Enter Expiry Days" type="number" required>
-          <br><br>
           <button type = "submit" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Shorten</button>
-          <br><br>
+          <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"id="copy">Copy</button>
+        </form>
           <span id="invalid-url"></span>
           <a href="#" id="shorten_url" target="_blank"></a>
-          <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"id="copy" onclick="copy()">Copy text</button>
-        </form>
-        </div>
+      </div>
       </div>
     </section>
-    <script>
-      document
-        .getElementById("url-form")
-        .addEventListener("submit", async (e) => {
-          // let creationDate = new Date().toLocaleDateString();
-
-          e.preventDefault();
-          // console.log(e.target.elements[0].value);
-          const {
-            target: {
-              elements: [{ value: originalUrl }, { value: expiry }],
-            },
-          } = e;
-
-          console.log(validURL(originalUrl));
-
-          if (!validURL(originalUrl)) {
-            document.getElementById("invalid-url").innerText ="Please enter Valid Url";
-          } else {
-            // console.log(elements[0].value); //browser console
-            // refer javascriptinfo fetch article for more info
-            let response = await fetch("/url", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                originalUrl,
-                expiry,
-              }),
-            })
-              .then((res) => res.text())
-              .catch((error) => console.log(error));
-
-            //   console.log(response);
-            document.getElementById("shorten_url").innerText = response;
-            document.getElementById("shorten_url").href = response;
-          }
-        });
-
-      function submitForm(e) {
-        console.log(e.target);
-      }
-      function validURL(myURL) {
-        var pattern = new RegExp(
-          "^(https?:\\/\\/)?" + // protocol
-            "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|" + // domain name
-            "((\\d{1,3}\\.){3}\\d{1,3}))" + // ip (v4) address
-            "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + //port
-            "(\\?[;&amp;a-z\\d%_.~+=-]*)?" + // query string
-            "(\\#[-a-z\\d_]*)?$",
-          "i"
-        );
-        console.log(pattern.test(myURL));
-        return pattern.test(myURL);
-      }
-      function copy() {
-        var copyText = document.createElement("input");
-        copyText.value = document.getElementById("shorten_url").href;
-        console.log(copyText.value);
-        navigator && navigator.clipboard.writeText(copyText.value);
-      }
-    </script>
+    <script src="/js/index.js"></script>
   </body>
 </html>

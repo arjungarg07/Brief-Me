@@ -1,6 +1,7 @@
-var MongoClient = require("mongodb").MongoClient
-// mongoose.connect('mongodb://localhost:27017/', {useNewUrlParser: true, useUnifiedTopology: true});
-var url = "mongodb://localhost:27017/"
+const MongoClient = require("mongodb").MongoClient
+const mongoose = require("mongoose");
+var url = "mongodb://localhost:27017/";
+mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
 
 const insertQuery = (input)=>{
     MongoClient.connect(url, function(err, db) {
@@ -12,8 +13,8 @@ const insertQuery = (input)=>{
         let {expiry} = input;
         const expiryTime = 5;
         // const expiryTime = expiry * 24 * 60 * 60;
-        dbo.collection("url").createIndex( { "expiredAt": 1 }, { expireAfterSeconds: 0 } )
-        db.close()
+        dbo.collection("url").createIndex( { "expiredAt": 1 }, { expireAfterSeconds: 0 } );
+        db.close();
       });
     });
 };
@@ -50,8 +51,8 @@ const selectAll = ()=>{
     var dbo = db.db("mydb")
     dbo.collection("url").find({}).toArray(function(err, result) {
       if (err) throw err
-      console.log(result)
-      db.close()
+      console.log(result);
+      db.close();
     })
   })
 } 

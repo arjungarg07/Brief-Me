@@ -11,14 +11,15 @@ router.post("/shorten", async (req, res) => {
         const { hash } = checkUrl;
         let hashedUrl = `http://localhost:8000/${hash}`;
         res.send(hashedUrl);
+        // res.send({msg:"Saved url sent",status:"0"});
       } else {
         const hashValue = (await generateHash(originalUrl)).slice(0, 6);
         // console.log(hashValue.slice(0, 6));
         let data = {
           hash: hashValue.slice(0, 6),
           originalUrl: originalUrl,
-          date: new Date(),
-          count: 0,
+          creationDate: new Date(),
+          redirectCount: 0,
         };
         insertQuery(data);
         let hashedUrl = `http://localhost:8000/${hashValue}`;
@@ -26,7 +27,7 @@ router.post("/shorten", async (req, res) => {
       }
     }catch(err){
       console.log(err);
-      // res.send({msg:"error occured",status:"0"})
+      res.send({msg:"error occured",status:"0"})
     }
   });
 

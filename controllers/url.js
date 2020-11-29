@@ -1,19 +1,26 @@
 const Url = require('../models/Url');
 const User = require('../models/User');
 const config = require('config');
+const redis = require('redis');
+
 const { generateHash } = require('../uniqueUrlCode');
+
+const REDISPORT = process.env.REDISPORT || 6379;
+const client = redis.createClient(REDISPORT);
+
 
 async function shorten(req,res){	
 	try{
 		const baseURL = config.get('baseURL');
-		console.log('incoming request');
+		console.log('incoming request',req.body);
+
 		const { originalUrl } = req.body;
 		let hash  = await generateHash(originalUrl);
 		hash = hash.slice(0,6);
 		// console.log(hash);
 		let check ; //BUG yaha pr ye dhang se check nhi ho rha 
 		await Url.findOne({hash: hash},(err,docs)=>{check = docs});
-		console.log('yeh aa rha ',check);
+		// console.log('yeh aa rha ',check);
 		if(check){
 			let priorResult = baseURL + hash;
 			console.log('hash was present in the db hence not inserted again');
@@ -31,7 +38,7 @@ async function shorten(req,res){
 				expirationDate: new Date(),   // BUG yaha req ki body mein se lelena
 			});
 		await data.save();
-		// await Url.deleteMany({ redirectCount:'0'},(err,docs)=>{console.log('done')});z
+		await Url.deleteMany({ redirectCount:'0'},(err,docs)=>{console.log('done')});
 		await Url.find({},(err,docs)=>{console.log(docs)});
 
 		let result = baseURL+ hash;
@@ -61,6 +68,7 @@ async function redirect(req,res){
 		let {originalURL} = check;
 		console.log('check',originalURL);
 		if(originalURL){
+			client.setex(code,3600,originalURL);
 			res.redirect(originalURL);
 		}
 	}catch(err){

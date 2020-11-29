@@ -1,9 +1,11 @@
 var md5 = require('md5');
 
-const generateHash = async(url)=> {
-    const hash = await md5(url);
-    // console.log(hash)
-    return hash;
+const generateHash = (url)=>{
+	return new Promise((resolve, reject) => {
+		const hash = md5(url);
+		// console.log(hash);
+		resolve(hash);
+	});
 };
 
 module.exports = {

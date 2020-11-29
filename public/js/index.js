@@ -8,11 +8,12 @@ document.getElementById("url-form").addEventListener("submit", async (e) => {
 	  },
 	} = e;
   
-	if (!validURL(originalUrl)) {
-	  console.log("Invalid Url");
-	  onInvalid();
-	} else {
-	  // console.log(elements[0].value);
+	// if (!validURL(originalUrl)) {
+	//   console.log("Invalid Url");
+	//   onInvalid();
+	// } else {
+	//   console.log(elements[0].value);
+	console.log(originalUrl);
 	  let response = await fetch("/shorten", {
 		method: "POST",
 		headers: {
@@ -32,32 +33,32 @@ document.getElementById("url-form").addEventListener("submit", async (e) => {
 	  document.querySelector("#copy").addEventListener("click", (e) => {
 		ClipBoard(response);
 	  });
-	}
+	// }
   });
   
-  function validURL(url) {
-	if (
-	  url.substring(0, 4) != "http" &&
-	  url.substring(0, 4) != "HTTP" &&
-	  url.substring(0, 4) != "Http"
-	)
-	  return false;
-	else {
-	  return true;
-	}
-  }
-  
-  function onInvalid() {
-	document.getElementById("invalid-url").style.display = "block";
-	document.getElementById("invalid-url").innerText = "Please enter Valid Url";
-	setTimeout(function () {
-	  document.getElementById("invalid-url").style.display = "none";
-	}, 2000);
-  }
-  
-//   function submitForm(e) {
-// 	console.log(e.target);
+//   function validURL(url) {
+// 	if (
+// 	  url.substring(0, 4) != "http" &&
+// 	  url.substring(0, 4) != "HTTP" &&
+// 	  url.substring(0, 4) != "Http"
+// 	)
+// 	  return false;
+// 	else {
+// 	  return true;
+// 	}
 //   }
+  
+//   function onInvalid() {
+// 	document.getElementById("invalid-url").style.display = "block";
+// 	document.getElementById("invalid-url").innerText = "Please enter Valid Url";
+// 	setTimeout(function () {
+// 	  document.getElementById("invalid-url").style.display = "none";
+// 	}, 2000);
+//   }
+  
+  function submitForm(e) {
+	console.log(e.target);
+  }
   
   function ClipBoard(result) {
 	navigator.clipboard.writeText(result);

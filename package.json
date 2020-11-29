@@ -19,6 +19,7 @@
     "mongoose": "^5.10.17",
     "nodemailer": "^6.4.11",
     "nodemon": "^2.0.4",
-    "redis": "^3.0.2"
+    "redis": "^3.0.2",
+    "watch-api": "^1.0.2"
   }
 }

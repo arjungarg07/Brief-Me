@@ -1,9 +1,8 @@
-const router = require("express").Router();
+const router = require('express').Router();
 
-const main = require("./api/main");
-const url = require("./api/url");
+const url = require('../controllers/url');
 
-router.use('/',main);
-router.use('/',url);
+router.post('/shorten',url.shorten);
+router.get('/:code',url.redirect);
 
 module.exports = router;

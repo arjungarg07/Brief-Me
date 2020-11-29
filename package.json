@@ -11,12 +11,14 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "config": "^3.3.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "md5": "^2.3.0",
     "mongodb": "^3.6.0",
-    "mongoose": "^5.10.9",
+    "mongoose": "^5.10.17",
     "nodemailer": "^6.4.11",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "redis": "^3.0.2"
   }
 }

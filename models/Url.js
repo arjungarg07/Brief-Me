@@ -1,10 +1,16 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const urlSchema = new mongoose.Schema({
-    urlCode: String,
-    longUrl: String,
+const urlSchema = new Schema({
+    hash: String,
+    originalURL: String,
     redirectCount: Number,
-    date: { type:Date, default: Date.now }
+	creationDate: { type: Date},
+	expirationDate:{ type: Date},
+	userID: {
+		type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+	},
 });
 
 module.exports = mongoose.model('Url', urlSchema);

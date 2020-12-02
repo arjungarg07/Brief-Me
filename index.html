@@ -4,7 +4,8 @@
     <title>Url Shortener</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+	<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+	<link rel="shortcut icon" href="#" />
   </head>
   <body>
     <section class="text-gray-700 body-font">
@@ -17,8 +18,8 @@
           <form id="url-form">
           <input class="flex-grow w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mr-4 mb-4 sm:mb-0" placeholder="Enter valid URL" type="text">
           <button type = "submit" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Shorten</button>
-          <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"id="copy">Copy</button>
         </form>
+		<button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"id="copy">Copy</button>
           <span id="invalid-url"></span>
           <a href="#" id="shorten_url" target="_blank"></a>
       </div>

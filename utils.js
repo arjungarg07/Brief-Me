@@ -1,4 +1,4 @@
-var md5 = require('md5');
+const md5 = require('md5');
 
 const generateHash = (url)=>{
 	return new Promise((resolve, reject) => {

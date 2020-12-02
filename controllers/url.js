@@ -3,7 +3,7 @@ const User = require('../models/User');
 const config = require('config');
 const redis = require('redis');
 
-const { generateHash } = require('../uniqueUrlCode');
+const { generateHash } = require('../utils');
 
 const REDISPORT = process.env.REDISPORT || 6379;
 const client = redis.createClient(REDISPORT);

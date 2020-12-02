@@ -8,10 +8,10 @@ document.getElementById("url-form").addEventListener("submit", async (e) => {
 	  },
 	} = e;
   
-	// if (!validURL(originalUrl)) {
-	//   console.log("Invalid Url");
-	//   onInvalid();
-	// } else {
+	if (!validURL(originalUrl)) {
+	  console.log("Invalid Url");
+	  onInvalid();
+	} else {
 	//   console.log(elements[0].value);
 	console.log(originalUrl);
 	  let response = await fetch("/shorten", {
@@ -27,34 +27,34 @@ document.getElementById("url-form").addEventListener("submit", async (e) => {
 		.catch((error) => console.log(error));
 	  if(response.success){
 		  console.log('Response:',response);
-		  document.getElementById("shorten_url").innerText = response.message;
-		  document.getElementById("shorten_url").href = response.message;
+		  document.getElementById("shorten_url").innerText = response.data;
+		  document.getElementById("shorten_url").href = response.data;
 		}
 	  document.querySelector("#copy").addEventListener("click", (e) => {
 		ClipBoard(response);
 	  });
-	// }
+	}
   });
   
-//   function validURL(url) {
-// 	if (
-// 	  url.substring(0, 4) != "http" &&
-// 	  url.substring(0, 4) != "HTTP" &&
-// 	  url.substring(0, 4) != "Http"
-// 	)
-// 	  return false;
-// 	else {
-// 	  return true;
-// 	}
-//   }
+  function validURL(url) {
+	if (
+	  url.substring(0, 4) != "http" &&
+	  url.substring(0, 4) != "HTTP" &&
+	  url.substring(0, 4) != "Http"
+	)
+	  return false;
+	else {
+	  return true;
+	}
+  }
   
-//   function onInvalid() {
-// 	document.getElementById("invalid-url").style.display = "block";
-// 	document.getElementById("invalid-url").innerText = "Please enter Valid Url";
-// 	setTimeout(function () {
-// 	  document.getElementById("invalid-url").style.display = "none";
-// 	}, 2000);
-//   }
+  function onInvalid() {
+	document.getElementById("invalid-url").style.display = "block";
+	document.getElementById("invalid-url").innerText = "Please enter Valid Url";
+	setTimeout(function () {
+	  document.getElementById("invalid-url").style.display = "none";
+	}, 2000);
+  }
   
   function submitForm(e) {
 	console.log(e.target);

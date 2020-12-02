@@ -25,8 +25,9 @@ async function shorten(req,res){
 			let priorResult = baseURL + hash;
 			console.log('hash was present in the db hence not inserted again');
 			res.status(200).json({
+				data: priorResult,
 				success: true,
-				message: priorResult
+				message: "Successfully generated short Url"
 			});
 		return;
 		}
@@ -38,14 +39,15 @@ async function shorten(req,res){
 				expirationDate: new Date(),   // BUG yaha req ki body mein se lelena
 			});
 		await data.save();
-		await Url.deleteMany({ redirectCount:'0'},(err,docs)=>{console.log('done')});
+		// await Url.deleteMany({ redirectCount:'0'},(err,docs)=>{console.log('done')});
 		await Url.find({},(err,docs)=>{console.log(docs)});
 
 		let result = baseURL+ hash;
 		
 		res.status(200).json({
+			data: result,
 			success: true,
-			message: result
+			message: "Successfully generated short Url"
 		});
 	}catch(err){
 		console.log(err);
@@ -60,9 +62,9 @@ async function shorten(req,res){
 
 async function redirect(req,res){
 	try{
-		console.log('entered');
+		console.log('Inside redirect func');
 		const code = req.params.code;
-		console.log(code);
+		console.log('hello',code);
 		let check = {};
 		await Url.findOne({hash: code},(err,docs)=>{check = docs});
 		let {originalURL} = check;

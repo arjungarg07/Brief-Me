@@ -4,26 +4,28 @@
     <title>Url Shortener</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!-- <link href="tailwind.css" rel="stylesheet"> -->
 	<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 	<link rel="shortcut icon" href="#" />
   </head>
-  <body>
-    <section class="text-gray-700 body-font">
+  <body bgcolor="black">
+    <section class="text-white body-font">
       <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-col text-center w-full mb-12">
-          <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Url Shortener</h1>
-          <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Create shorter aliases for long URLs</p>
+          <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-green-300">Brief-Me</h1>
+          <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Shorten, create and share trusted, powerful links for your work.</p>
         </div>
-        <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:px-0">
-          <form id="url-form">
-          <input class="flex-grow w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mr-4 mb-4 sm:mb-0" placeholder="Enter valid URL" type="text">
+        <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:px-0 max-w-full">
+          <form id="url-form" class="flex w-full">
+          <input class="flex-1 appearance-none rounded shadow p-3 text-black mr-2 focus:outline-none" placeholder="Enter valid URL" type="text">
           <button type = "submit" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Shorten</button>
-        </form>
-		<button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"id="copy">Copy</button>
-          <span id="invalid-url"></span>
-          <a href="#" id="shorten_url" target="_blank"></a>
-      </div>
-      </div>
+		  </form>
+	    </div>
+	  	<div class="flex justify-evenly">
+		  <span id="invalid-url" class="text-white text-center m-6 px-10"></span>
+		  <a class="text-white text-center m-6 px-10" href="#" id="shorten_url" target="_blank"></a>
+		  <button class="text-white bg-indigo-500 border-0 m-6 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"id="copy">Copy</button>
+	  	</div>
     </section>
     <script src="/js/index.js"></script>
   </body>

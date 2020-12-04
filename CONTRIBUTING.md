@@ -5,7 +5,8 @@
 Thankyou so much for showing interest in the project. We greatly appreciate any work contributed, no matter how small!
 
 ## How to Contribute
-When you are ready to work on an issue, let us know by leaving a comment on the issue.
+When you are ready to work on an issue, let us know by leaving a comment on the issue.Once you are assigned the issue (or once you have claimed the issue) only then proceed to make the Pull Request. This will help avoid multiple PRs pertaining to the same issue.
+
 
 ## Steps to Contribute
 **1.** Fork [this](https://github.com/arjungarg07/Brief-Me) repository.

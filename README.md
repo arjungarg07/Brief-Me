@@ -1,5 +1,6 @@
 
 # Brief-Me
+[![Preview Image](./assets/preview.png)]
 
 ![](https://img.shields.io/badge/first--timers-friendly-green?style=flat) ![](https://img.shields.io/badge/License-MIT-orange)
 

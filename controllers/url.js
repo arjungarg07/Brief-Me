@@ -4,6 +4,7 @@ const config = require('config');
 const redis = require('redis');
 
 const { generateHash } = require('../utils');
+const { urlencoded } = require('body-parser');
 
 const REDISPORT = process.env.REDISPORT || 6379;
 const client = redis.createClient(REDISPORT);
@@ -51,21 +52,27 @@ async function shorten(req, res) {
 }
 
 async function redirect(req, res) {
-	try {
-		const { code } = req.params;
-		const { originalURL } = await Url.findOne({ hash: code }).exec() || {};
-		// console.log('check', originalURL);
-		if (originalURL) {
-			client.setex(code, 3600, originalURL);
-			res.redirect(originalURL);
+	const { code } = req.params;
+	if (!req.found) {
+		try {
+			const { originalURL } = await Url.findOne({ hash: code }).exec() || {};
+			// console.log('check', originalURL);
+			if (originalURL) {
+				client.setex(code, 3600, originalURL);
+				// res.redirect(originalURL);
+			}
+		} catch (err) {
+			console.log(err);
+			res.status(500).json({
+				success: false,
+				message: 'Internal Server error',
+			});
 		}
-	} catch (err) {
-		console.log(err);
-		res.status(500).json({
-			success: false,
-			message: 'Internal Server error',
-		});
 	}
+	let URL = await Url.findOne({ hash: code });
+	URL.redirectCount = URL.redirectCount + 1;
+	URL.save();
+	res.redirect(URL.originalURL);
 }
 
 module.exports = { shorten, redirect };

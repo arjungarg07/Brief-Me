@@ -29,7 +29,7 @@ document.getElementById('url-form').addEventListener('submit', async (e) => {
 			console.log('Response:', response);
 			document.getElementById('shorten_url').innerText = response.data;
 			document.getElementById('shorten_url').href = response.data;
-			$('#copy').html('copy')
+			document.getElementById('copy').innerText='Copy'
 		}
 		document.querySelector('#copy').style.display = 'block';
 		document.querySelector('#copy').addEventListener('click', (e) => {
@@ -64,5 +64,5 @@ function submitForm(e) {
 
 function ClipBoard(result) {
 	 navigator.clipboard.writeText(result);
-	$('#copy').html('copied');
+	document.getElementById('copy').innerText='Copied'
 }

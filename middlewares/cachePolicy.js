@@ -3,7 +3,7 @@ const redis = require('redis');
 const REDISPORT = process.env.REDISPORT || 6379;
 const client = redis.createClient(REDISPORT);
 
-function cache(req,res,next){
+ cache=(req,res,next)=>{
 	const {code} = req.params;
 
 	client.get(code,(err,data)=>{

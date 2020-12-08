@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
-
-const urlSchema = new Schema({
+const urlSchema = new mongoose.Schema({
     hash: String,
     originalURL: String,
     redirectCount: Number,

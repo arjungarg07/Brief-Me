@@ -4,16 +4,16 @@ const db = config.get('mongoURI');
 console.log(db);
 // dbname - test
 const connectDB = async () => {
-	try {
+// here i have used then and catch statement instead of try catch 
 	  await mongoose.connect(db, {
 		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useFindAndModify: false, 
-	  });
-	  console.log('MongoDB Connected!');
-	} catch (err) {
-	  console.error(err);
-	}
-  };
+		 useUnifiedTopology: true,
+		 useCreateIndex:true
+		}).then(()=>{
+			console.log("DB IS CONNECTED sucessfully");
+		}).catch(()=>{
+			console.log("DB connection failed");
+		})
+}
   
   module.exports = connectDB;

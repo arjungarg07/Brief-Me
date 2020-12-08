@@ -4,7 +4,6 @@
   "description": "url shortener",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js"
   },
   "author": "Arjun Garg",
@@ -14,6 +13,8 @@
     "config": "^3.3.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "jsonwebtoken": "^8.5.1",
     "md5": "^2.3.0",
     "mongodb": "^3.6.0",
     "mongoose": "^5.10.17",

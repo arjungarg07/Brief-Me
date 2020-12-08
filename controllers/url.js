@@ -10,7 +10,7 @@ const client = redis.createClient(REDISPORT);
 
 const baseURL = config.get('baseURL');
 
-async function shorten(req, res) {
+ exports.URLshorten= async (req, res)=> {
 	try {
 		const { originalUrl } = req.body;
 		const hash = generateHash(originalUrl);
@@ -50,7 +50,7 @@ async function shorten(req, res) {
 	}
 }
 
-async function redirect(req, res) {
+exports.URLredirect= async (req, res)=> {
 	try {
 		const { code } = req.params;
 		const { originalURL } = await Url.findOne({ hash: code }).exec() || {};
@@ -66,6 +66,5 @@ async function redirect(req, res) {
 			message: 'Internal Server error',
 		});
 	}
-}
+};
 
-module.exports = { shorten, redirect };

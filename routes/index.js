@@ -1,9 +1,9 @@
 const router = require('express').Router();
 
 const cache = require('../middlewares/cachePolicy');
-const url = require('../controllers/url');
+const { URLshorten ,URLredirect}= require('../controllers/url');
 
-router.post('/shorten',url.shorten);
-router.get('/:code',cache,url.redirect);
+router.post('/shorten',URLshorten);
+router.get('/:code',cache,URLredirect);
 
 module.exports = router;

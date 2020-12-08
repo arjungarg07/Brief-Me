@@ -7,6 +7,8 @@ const logger = require('watch-api')
 const connectDB = require('./config/db');
 const router = require('./routes/index');
 
+const authRoutes=require("./routes/auth")
+
 const app = express();
 const PORT = 8000;
 
@@ -22,7 +24,13 @@ app.use(cors());
 
 app.use('/', express.static(path.join(__dirname, 'public')));
 
+
+//routes
+
 app.use(router);
+app.use(authRoutes)
+
+
 
 app.listen(PORT, () => {
   console.log(`Server Listening on ${PORT}`);

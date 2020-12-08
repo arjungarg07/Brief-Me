@@ -29,10 +29,11 @@ document.getElementById('url-form').addEventListener('submit', async (e) => {
 			console.log('Response:', response);
 			document.getElementById('shorten_url').innerText = response.data;
 			document.getElementById('shorten_url').href = response.data;
+			document.getElementById('copy').innerText='Copy'
 		}
 		document.querySelector('#copy').style.display = 'block';
 		document.querySelector('#copy').addEventListener('click', (e) => {
-			ClipBoard(response);
+			ClipBoard(response.data);
 		});
 	}
 });
@@ -63,8 +64,5 @@ function submitForm(e) {
 
 function ClipBoard(result) {
 	navigator.clipboard.writeText(result);
-	$('#copied').slideToggle(200);
-	setTimeout(function () {
-		$('#copied').slideToggle(200);
-	}, 1000);
+	document.getElementById("copy").innerHTML='Copied'
 }

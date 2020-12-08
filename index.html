@@ -23,8 +23,13 @@
 	  	<div class="flex justify-evenly">
 		  <span id="invalid-url" class="text-white text-left m-6 px-10"></span>
 		  <a class="text-white text-center m-6 px-10" href="#" id="shorten_url" target="_blank"></a>
-		  <button class="hidden text-white bg-indigo-500 border-0 py-2 px-10 m-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" id="copy">Copy</button>
-	  	</div>
+      <button class="hidden text-white bg-indigo-500 border-0 py-2 px-10 m-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" id="copy">Copy</button>
+      
+      </div>
+      <div class="flex justify-evenly" >
+        <img id="QRImage" style="display: none;" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Example" ></img>
+      </div>
+     
     </section>
     <script src="/js/index.js"></script>
     

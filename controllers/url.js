@@ -4,7 +4,6 @@ const config = require('config');
 const redis = require('redis');
 
 const { generateHash } = require('../utils');
-const { urlencoded } = require('body-parser');
 
 const REDISPORT = process.env.REDISPORT || 6379;
 const client = redis.createClient(REDISPORT);

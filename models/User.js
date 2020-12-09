@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
+<<<<<<< HEAD
 const { Schema } = mongoose;
 const crypto =require("crypto");
 const uuidv1=require("uuid/v1");
 
+=======
+>>>>>>> 4d5353899dd212a249c2e18237c871ca02406214
 
-const userSchema = new Schema({
+
+const userSchema = new mongoose.Schema({
 	userID: {
 		type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

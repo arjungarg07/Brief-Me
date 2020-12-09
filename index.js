@@ -10,6 +10,8 @@ const router = require('./routes/index');
 const app = express();
 const PORT = 8000;
 
+require('dotenv').config();
+
 connectDB();
 
 app.get("/", function (req, res) {

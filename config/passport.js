@@ -1,7 +1,6 @@
 const passport =require("passport");
 const localStrategy=require("passport-local").Strategy;
-const User=require("../models/User")
-const jwtStrategy=require("passport-jwt").Strategy;
+const User=require("../models/User");
 const passportJwt=require("passport-jwt").ExtractJwt;
 
 

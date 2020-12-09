@@ -1,7 +1,4 @@
 {
   "mongoURI": "mongodb://localhost:27017/test",
-  "baseURL": "http://localhost:8000/",
-  "GOOGLE_CLIENT_ID": "144025185913-ireisec3jjgn1k05e4vdtgf0lrb2qpms.apps.googleusercontent.com",
-  "GOOGLE_CLIENT_SECRET": "hRbkQOz5sW_Wm52TGMwcs9wu",
-  "cookieKey": "secret-key-for-brief-me"
+  "baseURL": "http://localhost:8000/"
 }

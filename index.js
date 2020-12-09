@@ -6,7 +6,7 @@ const logger = require("watch-api");
 const passport = require("passport");
 const passportSetup = require("./config/passport-setup");
 const cookieSession = require("cookie-session");
-const cookieKey = require("./config/default.json").cookieKey;
+const dotenv = require("dotenv");
 
 const connectDB = require("./config/db");
 const router = require("./routes/index");
@@ -14,13 +14,14 @@ const router = require("./routes/index");
 const app = express();
 const PORT = 8000;
 
+dotenv.config();
 connectDB();
 
 // set up session cookies
 app.use(
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
-    keys: cookieKey,
+    keys: process.env.cookieKey,
   })
 );
 

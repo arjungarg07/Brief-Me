@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const cache = require('../middlewares/cachePolicy');
-const { URLshorten ,URLredirect}= require('../controllers/url');
+const { URLshorten ,URLredirect, shorten, redirect}= require('../controllers/url');
 
 const {}=require("../controllers/url");
 const { signup, signin, signout } = require('../controllers/auth');
@@ -16,7 +16,7 @@ router.post("/signin",signin);
 router.get("/signout",signout);
 
 
-router.post('/shorten',url.shorten);
-router.get('/:code',cache,url.redirect);
+router.post('/shorten',shorten);
+router.get('/:code',cache,redirect);
 
 module.exports = router;

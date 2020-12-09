@@ -3,15 +3,13 @@ const router = require("express").Router();
 const passport = require("passport");
 const cache = require("../middlewares/cachePolicy");
 const url = require("../controllers/url");
+const googleAuth = require("../controllers/googleAuth");
 
 router.post("/shorten", url.shorten);
 router.get("/:code", cache, url.redirect);
 
 // auth logout
-router.get("/auth/logout", (req, res) => {
-  req.logout();
-  res.redirect("/");
-});
+router.get("/auth/logout", googleAuth.logout);
 
 // auth with google+
 router.get(
@@ -25,10 +23,7 @@ router.get(
 router.get(
   "/auth/google/redirect",
   passport.authenticate("google"),
-  (req, res) => {
-    // res.send(req.user);
-    res.redirect("/");
-  }
+  googleAuth.redirect
 );
 
 module.exports = router;

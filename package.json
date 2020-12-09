@@ -12,14 +12,26 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "config": "^3.3.3",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
+    "crypto-js": "^4.0.0",
+    "dotenv": "^8.2.0",
+    "envs": "^0.1.6",
     "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "express-validator": "^6.8.0",
+    "jsonwebtoken": "^8.5.1",
     "md5": "^2.3.0",
     "mongodb": "^3.6.0",
     "mongoose": "^5.10.17",
     "nodemailer": "^6.4.11",
     "nodemon": "^2.0.4",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
     "redis": "^3.0.2",
+    "redis-server": "^1.2.2",
+    "uuid": "^3.3.3",
     "watch-api": "^1.0.2"
   }
 }

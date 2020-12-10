@@ -2,7 +2,6 @@ const router = require('express').Router();
 const cache = require('../middlewares/cachePolicy');
 const url = require('../controllers/url');
 const { check, validationResult } = require('express-validator');
- 
 const {signin,signout,signup}=require("../controllers/auth");
 
 

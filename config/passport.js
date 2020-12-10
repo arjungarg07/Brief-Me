@@ -15,7 +15,7 @@ opts.secretOrKey = 'secret';
     },
     function(username,password,done){
          let email=username;
-         console.log(`${username}    hell0 123 and ${password}`);
+      
          User.findOne({email},(err,user)=>{
             if(err||!user){
                 console.log("error:USER EMAIL DOESNT EXISTS1")
@@ -25,7 +25,7 @@ opts.secretOrKey = 'secret';
             }  
             if(!user.authentication(password)){
               return  done(err,false,{
-                // console.log("error:USER EMAIL DOESNT EXISTS2");
+                
                 error:"EMAIL AND PASSSWORD DOESNT MATCH "
                })
             }

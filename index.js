@@ -1,5 +1,4 @@
 const express = require("express");
-const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require('cookie-parser')
 const cors = require("cors");
@@ -14,6 +13,7 @@ const PORT = 8000;
 
 connectDB();
 
+const app = express();
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname + "/index.html"));
 });

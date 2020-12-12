@@ -4,7 +4,7 @@ const passport=require("passport");
 
 
 
-exports.signup=(req,res)=>{
+function signup(req,res){
     const user=new User(req.body);
 
     user.save((err,user)=>{
@@ -19,7 +19,7 @@ exports.signup=(req,res)=>{
 
 
   
-exports.signin= (req, res, next) =>{
+function signin(req, res, next){
     passport.authenticate('local', {session: false}, function(err, user, info) {
         
         if (err) { return next(err); }
@@ -42,9 +42,11 @@ exports.signin= (req, res, next) =>{
   
 
 
-exports.signout=(req,res)=>{
+function signout(req,res){
     res.clearCookie("token");
     res.json({
-        message:"User Signout Sucess"
+        message:"User Signout success"
     })
 };
+
+module.exports = { signin,signup,signout};

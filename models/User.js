@@ -4,8 +4,7 @@ const crypto =require("crypto");
 const uuidv1=require("uuid/v1");
 
 
-
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
 	userID: {
 		type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -41,7 +40,7 @@ userSchema
         })
 
 userSchema.methods={
-    authentiacte:function(plainpassword){
+    authenticate:function(plainpassword){
         return this.securePassword(plainpassword)===this.encry_password;
     },
 

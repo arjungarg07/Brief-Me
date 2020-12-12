@@ -23,7 +23,7 @@ function(username,password,done){
                 error:"USER EMAIL DOESNT EXISTS"
                })
             }  
-            if(!user.authentiacte(password)){
+            if(!user.authenticate(password)){
               return  done(err,false,{
                 // console.log("error:USER EMAIL DOESNT EXISTS2");
                 error:"EMAIL AND PASSSWORD DOESNT MATCH "

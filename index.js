@@ -3,14 +3,14 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
 const logger = require('watch-api')
-
 const connectDB = require('./config/db');
 const router = require('./routes/index');
+const dontenv=require("dotenv");
 
 const app = express();
 const PORT = 8000;
 
-require('dotenv').config();
+dontenv.config();
 
 connectDB();
 

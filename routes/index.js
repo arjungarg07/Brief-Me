@@ -1,22 +1,19 @@
 const router = require('express').Router();
-
 const cache = require('../middlewares/cachePolicy');
-const { URLshorten ,URLredirect, shorten, redirect}= require('../controllers/url');
-
-const {}=require("../controllers/url");
-const { signup, signin, signout } = require('../controllers/auth');
+const url=require("../controllers/url");
+const auth = require('../controllers/auth');
 
 
 require("../config/passport");
 
 
 //authentation 
-router.post("/signup",signup);
-router.post("/signin",signin);
-router.get("/signout",signout);
+router.post("/signup",auth.signup);
+router.post("/signin",auth.signin);
+router.get("/signout",auth.signout);
 
 
-router.post('/shorten',shorten);
-router.get('/:code',cache,redirect);
+router.post('/shorten',url.shorten);
+router.get('/:code',cache,url.redirect);
 
 module.exports = router;

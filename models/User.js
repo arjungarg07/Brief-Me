@@ -2,10 +2,6 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const crypto =require("crypto");
 const uuidv1=require("uuid/v1");
-<<<<<<< HEAD
-=======
-
->>>>>>> 2b2d7ef6ae4d5222457c00e1d4b36ab69e632a2b
 
 const userSchema = new Schema({
 	userID: {
@@ -41,31 +37,6 @@ userSchema
         .get(function(){
             return this._password;
         })
-<<<<<<< HEAD
-=======
-
-userSchema.methods={
-    authenticate:function(plainpassword){
-        return this.securePassword(plainpassword)===this.encry_password;
-    },
-
-
-    securePassword:function(plainpassword){
-        console.log("hello world");
-        console.log(plainpassword);
-        if(!plainpassword){
-            return "";
-        }
-        try{
-            return crypto.createHmac('sha256', this.salt)
-            .update(plainpassword)
-            .digest('hex');
-        }catch(err){
-            return " ";
-        }
-    }
-}
->>>>>>> 2b2d7ef6ae4d5222457c00e1d4b36ab69e632a2b
 
 userSchema.methods={
     authenticate:function(plainpassword){

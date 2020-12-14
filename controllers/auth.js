@@ -16,14 +16,7 @@ function signup(req,res){
         res.json(user);
     })
 }
-<<<<<<< HEAD
  function signin(req, res, next){
-=======
-
-
-  
-function signin(req, res, next){
->>>>>>> 2b2d7ef6ae4d5222457c00e1d4b36ab69e632a2b
     passport.authenticate('local', {session: false}, function(err, user, info) {
         
         if (err) { return next(err); }
@@ -44,12 +37,7 @@ function signin(req, res, next){
     })(req, res, next);
 }
   
-<<<<<<< HEAD
  
-=======
-
-
->>>>>>> 2b2d7ef6ae4d5222457c00e1d4b36ab69e632a2b
 function signout(req,res){
     res.clearCookie("token");
     res.json({

@@ -1,10 +1,11 @@
 const User=require("../models/User");
 const jwt = require("jsonwebtoken");
 const passport=require("passport");
-const expressJwt=require("express-jwt");
 const { check, validationResult } = require('express-validator');
 
-exports.signup=(req,res)=>{
+
+//signup 
+function signup(req,res){
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -24,8 +25,8 @@ exports.signup=(req,res)=>{
     })
 }
 
-  
-exports.signin= (req, res, next) =>{
+//signin
+function signin(req, res, next) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(402).json({ 
@@ -54,30 +55,12 @@ exports.signin= (req, res, next) =>{
 }
   
 
-
-exports.signout=(req,res)=>{
+//signout
+function signout(req,res){
     res.clearCookie("token");
     res.json({
-        message:"User Signout Sucess"
+        message:"User Signout Success"
     })
 };
 
-
-//protected routes
-exports.isSignedIn = expressJwt({
-  secret : process.env.SECRET,
-  userProperty: "auth",
-  algorithms: ['RS256']
-});
-
-
-//custom middlewares
-exports.isAuthenticated = (req,res,next)=>{
-  let checker =req.profile&&req.auth&&req.profile._id==req.auth._id
-  if(!checker){
-    res.status(403).json({
-      error:"ACCESS DINIED"
-    })
-  }
-  next();
-};
+module.exports={signout,signin,signup};

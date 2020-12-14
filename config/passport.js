@@ -2,13 +2,14 @@ const passport =require("passport");
 const localStrategy=require("passport-local").Strategy;
 const User=require("../models/User")
 const passportJwt=require("passport-jwt").ExtractJwt;
-
+const JwtStrategy = require('passport-jwt').Strategy;
 
 const opts={}
 opts.jwtFromRequest = passportJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = 'secret';
+opts.secretOrKey = 'anyrandomword';
 
- passport.use(new localStrategy(
+passport.use(new localStrategy(
+    
     {
        usernameField:'email',
        passwordField: 'password'
@@ -36,4 +37,18 @@ opts.secretOrKey = 'secret';
  ))
 
 
+ 
+ passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
+  
+    User.findOne({id: jwt_payload.sub}, function(err, user) {
+      if (err) {
+          return done(err, false);
+      }
+      if (user) {
+          return done(null, user);
+      } else {
+          return done(null, false);
+      }
+  })
+}));
 

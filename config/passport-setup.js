@@ -2,41 +2,8 @@ const User = require("../models/User");
 const passport = require("passport");
 const dotenv = require("dotenv");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const localStrategy=require("passport-local").Strategy;
-const passportJwt=require("passport-jwt").ExtractJwt;
 
 dotenv.config();
-
-const opts={}
-opts.jwtFromRequest = passportJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = 'secret';
-
- passport.use(new localStrategy(
-  {
-    usernameField:'email',
-    passwordField: 'password'
-},
-function(username,password,done){
-    let email=username;
-         console.log(`${username}    hell0 123 and ${password}`);
-        User.findOne({email},(err,user)=>{
-            if(err||!user){
-                console.log("error:USER EMAIL DOESNT EXISTS1")
-               return  done(err,false,{
-                error:"USER EMAIL DOESNT EXISTS"
-               })
-            }  
-            if(!user.authenticate(password)){
-              return  done(err,false,{
-                // console.log("error:USER EMAIL DOESNT EXISTS2");
-                error:"EMAIL AND PASSSWORD DOESNT MATCH "
-               })
-            }
-             done(null, user);
-
-      })
-    }
- ))
 
 passport.serializeUser((user, done) => {
   done(null, user.id);

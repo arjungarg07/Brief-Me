@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
+<<<<<<< HEAD
 const logger = require("watch-api");
 const passport = require("passport");
 const passportSetup = require("./config/passport-setup");
@@ -10,11 +11,22 @@ const dotenv = require("dotenv");
 
 const connectDB = require("./config/db");
 const router = require("./routes/index");
+=======
+const logger = require('watch-api')
+const connectDB = require('./config/db');
+const router = require('./routes/index');
+const dontenv=require("dotenv");
+>>>>>>> 2b2d7ef6ae4d5222457c00e1d4b36ab69e632a2b
 
 const app = express();
 const PORT = 8000;
 
+<<<<<<< HEAD
 dotenv.config();
+=======
+dontenv.config();
+
+>>>>>>> 2b2d7ef6ae4d5222457c00e1d4b36ab69e632a2b
 connectDB();
 
 // set up session cookies
@@ -39,7 +51,13 @@ app.use(cors());
 
 app.use("/", express.static(path.join(__dirname, "public")));
 
+
+//routes
+
 app.use(router);
+
+
+
 
 app.listen(PORT, () => {
   console.log(`Server Listening on ${PORT}`);

@@ -1,10 +1,10 @@
 function redirect(req, res) {
-  res.redirect("/");
+	res.redirect('/');
 }
 
 function logout(req, res) {
-  req.logout();
-  res.redirect("/");
+	req.logout();
+	res.redirect('/');
 }
 
 module.exports = { logout, redirect };

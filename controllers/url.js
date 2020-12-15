@@ -54,7 +54,8 @@ async function redirect(req, res) {
 	const { code } = req.params;
 	if (!req.found) {
 		try {
-			const { originalURL } = await Url.findOne({ hash: code }).exec() || {};
+			const { originalURL } =
+				(await Url.findOne({ hash: code }).exec()) || {};
 			// console.log('check', originalURL);
 			if (originalURL) {
 				client.setex(code, 3600, originalURL);

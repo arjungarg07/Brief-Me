@@ -30,7 +30,7 @@ document.getElementById('url-form').addEventListener('submit', async (e) => {
 			document.getElementById('shorten_url').innerText = response.data;
 			document.getElementById('shorten_url').href = response.data;
 			updateQRImage(response.data);
-			document.getElementById('copy').innerText='Copy'
+			document.getElementById('copy').innerText = 'Copy';
 		}
 		document.querySelector('#copy').style.display = 'block';
 		document.querySelector('#copy').addEventListener('click', (e) => {
@@ -65,11 +65,11 @@ function submitForm(e) {
 
 function ClipBoard(result) {
 	navigator.clipboard.writeText(result);
-	document.getElementById("copy").innerHTML='Copied'
+	document.getElementById('copy').innerHTML = 'Copied';
 }
 
-function updateQRImage(shortenedUrl){
+function updateQRImage(shortenedUrl) {
 	const QRImg = document.getElementById('QRImage');
 	QRImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${shortenedUrl}`;
-	QRImg.style.display="block";
+	QRImg.style.display = 'block';
 }

@@ -5,15 +5,15 @@ console.log(db);
 // dbname - test
 const connectDB = async () => {
 	try {
-	  await mongoose.connect(db, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useFindAndModify: false, 
-	  });
-	  console.log('MongoDB Connected!');
+		await mongoose.connect(db, {
+			useNewUrlParser: true,
+			useUnifiedTopology: true,
+			useFindAndModify: false,
+		});
+		console.log('MongoDB Connected!');
 	} catch (err) {
-	  console.error(err);
+		console.error(err);
 	}
-  };
-  
-  module.exports = connectDB;
+};
+
+module.exports = connectDB;

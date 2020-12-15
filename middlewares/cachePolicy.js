@@ -12,12 +12,12 @@ function cache(req, res, next) {
 		if (data !== null) {
 			console.log('Cache redirect', data);
 			req.found = true;
-			next()
+			next();
 			// res.redirect(data);
 		} else {
 			next();
 		}
-	})
-};
+	});
+}
 
 module.exports = cache;

@@ -22,12 +22,12 @@ dotenv.config();
 connectDB();
 
 //set up session cookies
-app.use(
-	cookieSession({
-		maxAge: 24 * 60 * 60 * 1000,
-		keys: process.env.cookieKey,
-	})
-);
+// app.use(
+// 	cookieSession({
+// 		maxAge: 24 * 60 * 60 * 1000,
+// 		keys: process.env.cookieKey,
+// 	})
+// );
 
 //initialize passport
 app.use(passport.initialize());

@@ -7,6 +7,10 @@ const passport = require('passport');
 const passportSetup = require('./config/passport-setup');
 const cookieSession = require('cookie-session');
 const dotenv = require('dotenv');
+const userRouter= require('./routes/user');
+const cookieParser = require('cookie-parser')
+
+
 
 const connectDB = require('./config/db');
 const router = require('./routes/index');
@@ -17,7 +21,7 @@ const PORT = 8000;
 dotenv.config();
 connectDB();
 
-// set up session cookies
+//set up session cookies
 // app.use(
 // 	cookieSession({
 // 		maxAge: 24 * 60 * 60 * 1000,
@@ -25,7 +29,7 @@ connectDB();
 // 	})
 // );
 
-// initialize passport
+//initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -36,6 +40,8 @@ app.get('/', function (req, res) {
 app.use(logger);
 app.use(bodyParser.json());
 app.use(cors());
+app.use(cookieParser())
+app.use(userRouter);
 
 app.use('/', express.static(path.join(__dirname, 'public')));
 

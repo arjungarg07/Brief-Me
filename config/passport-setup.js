@@ -4,12 +4,12 @@
 // const GoogleStrategy = require('passport-google-oauth20').Strategy;
 // const localStrategy = require('passport-local').Strategy;
 // const passportJwt = require('passport-jwt').ExtractJwt;
-
+// const JwtStrategy = require('passport-jwt').Strategy;
 // dotenv.config();
 
 // const opts = {};
 // opts.jwtFromRequest = passportJwt.fromAuthHeaderAsBearerToken();
-// opts.secretOrKey = 'secret';
+// opts.secretOrKey = process.env.SECRET;
 
 // passport.use(
 // 	new localStrategy(
@@ -19,10 +19,10 @@
 // 		},
 // 		function (username, password, done) {
 // 			let email = username;
-// 			console.log(`${username}    hell0 123 and ${password}`);
+// 			//console.log(`${username}    hell0 123 and ${password}`);
 // 			User.findOne({ email }, (err, user) => {
 // 				if (err || !user) {
-// 					console.log('error:USER EMAIL DOESNT EXISTS1');
+// 					//console.log('error:USER EMAIL DOESNT EXISTS1');
 // 					return done(err, false, {
 // 						error: 'USER EMAIL DOESNT EXISTS',
 // 					});
@@ -55,7 +55,7 @@
 // 			// options for google strategy
 // 			clientID: process.env.GOOGLE_CLIENT_ID,
 // 			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-// 			callbackURL: '/auth/google/redirect',
+//			callbackURL: '/auth/google/redirect',
 // 		},
 // 		(accessToken, refreshToken, profile, done) => {
 // 			// check if user already exists in our own db
@@ -88,4 +88,17 @@
 // 			});
 // 		}
 // 	)
-// );
+// ); 
+passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
+		
+    User.findOne({id: jwt_payload.sub}, function(err, user) {
+      if (err) {
+          return done(err, false);
+      }
+      if (user) {
+          return done(null, user);
+      } else {
+          return done(null, false);
+      }
+  })
+}));

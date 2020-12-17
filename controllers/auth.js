@@ -1,8 +1,15 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
+const { check, validationResult } = require('express-validator');
 
 function signUp(req, res) {
+	const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(402).json({ 
+      errors: errors.array()[0].msg
+     });
+  }
 	const user = new User(req.body);
 
 	user.save((err, user) => {
@@ -15,6 +22,12 @@ function signUp(req, res) {
 	});
 }
 function signIn(req, res, next) {
+	const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(402).json({ 
+      errors: errors.array()[0].msg
+     });
+  }
 	passport.authenticate(
 		'local',
 		{ session: false },
@@ -26,6 +39,7 @@ function signIn(req, res, next) {
 			if (!user) {
 				return res.status(500).json(info.message);
 			}
+			//create token
 			const token = jwt.sign({ _id: user._id }, process.env.SECRET);
 			//create cookie
 			res.cookie('token', token, {

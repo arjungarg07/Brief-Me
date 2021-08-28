@@ -23,7 +23,6 @@
     "mongodb": "^3.6.0",
     "mongoose": "^5.10.17",
     "nodemailer": "^6.4.11",
-    "nodemon": "^2.0.4",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.0",
@@ -31,5 +30,8 @@
     "redis": "^3.0.2",
     "uuid": "^3.3.3",
     "watch-api": "^1.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }
